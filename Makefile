@@ -8,6 +8,9 @@ SRCS = 	so_long.c main.c
 
 OBJ = $(SRCS:%c=%o)
 
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+
 
 all: $(NAME)
 
@@ -17,8 +20,8 @@ $(NAME): $(OBJ)
 run:$(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-	$(CC) $(CFLAGS) $(NAME)
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
 
 clean:
 	rm -f $(OBJ) $(BONUSOBJ)
