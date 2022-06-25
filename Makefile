@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = 	so_long.c main.c
+SRCS = 	./scr/*.c ./minilibx
 
 OBJ = $(SRCS:%c=%o)
 
