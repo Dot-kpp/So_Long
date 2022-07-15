@@ -1,10 +1,12 @@
-NAME = so_long.a
+TARGET = so_long
 
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = 	./scr/*.c ./minilibx
+LIB = ./mlx
+
+SRCS = 	so_long.c
 
 OBJ = $(SRCS:%c=%o)
 
@@ -12,21 +14,31 @@ OBJ = $(SRCS:%c=%o)
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 
-all: $(NAME)
+all:
+	@$(CC) -lmlx -framework OpenGL -framework AppKit $(SRCS)
+	@echo ""
+	@echo "Your shit is compiled"
+	@echo ""
+	@echo "ᕙ( ͡❛ ͜ʖ ͡❛)ᕗ"
+	@echo ""
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+run:$(TARGET)
 
-run:$(NAME)
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) $(LIB) -framework OpenGL -framework AppKit -o $(TARGET)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
+frustration:
+	@echo "FUUUCK"
 
 clean:
-	rm -f $(OBJ) $(BONUSOBJ)
+	@rm -rf $(OBJ) $(BONUSOBJ)
 
 fclean: clean
-	rm -f $(NAME) *.out
+	@rm -rf $(TARGET) *.out
+	@echo ""
+	@echo "Your shit is clean af!"
+	@echo ""
+	@echo "(👍 ͡❛ ͜ʖ ͡❛)👍"
+	@echo ""
 
 re:	fclean all
