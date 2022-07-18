@@ -17,11 +17,35 @@ void player_validate(void);
 
 void enemie_validate(void);
 
-void wall_print(void);
+void wall_print(void){
+	void	*mlx;
+	void	*img;
+	char	*relative_path = "./Assets/test.xpm";
+	int		img_width;
+	int		img_height;
 
-void floor_print(void);
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+}
 
-void obstical_print(void);
+void floor_print(void){
+	void	*mlx;
+	void	*img;
+	char	*relative_path = "./Assets/test.xpm";
+	int		img_width;
+	int		img_height;
+
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+}
+
+void obstical_print(void){
+	void	*mlx;
+	void	*img;
+	char	*relative_path = "./Assets/test.xpm";
+	int		img_width;
+	int		img_height;
+
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+}
 
 
 void map_init(void);
