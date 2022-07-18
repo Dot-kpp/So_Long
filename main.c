@@ -54,6 +54,8 @@ void player_init(void);
 
 void enemie_init(void);
 
+void init_loop(void);
+
 void errors(void);
 
 void window(void)
