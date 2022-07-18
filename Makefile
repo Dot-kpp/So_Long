@@ -6,7 +6,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 LIB = ./mlx
 
-SRCS = 	so_long.c
+SRCS = 	so_long.c main.c
 
 OBJ = $(SRCS:%c=%o)
 
