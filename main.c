@@ -1,14 +1,27 @@
-#include <mlx.h>
-#include "so_long.h"
+#include "./library/so_long.h"
 
 
-void map_validate(void){
-	
-}
+/*
+0 for an empty space,
+1 for a wall,
+C for a collectible,
+E for a map exit,
+P for the player’s starting position.
+*/
+
+
+
+void map_validate(void);
 
 void player_validate(void);
 
 void enemie_validate(void);
+
+void wall_print(void);
+
+void floor_print(void);
+
+void obstical_print(void);
 
 void map_init(void);
 
