@@ -4,9 +4,9 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-LIB = ./mlx
+LIB = ./library/mlx 
 
-SRCS = 	so_long.c main.c
+SRCS = 	so_long.c main.c ./library/gnl/get_next_line.c ./library/gnl/get_next_line_utils.c
 
 OBJ = $(SRCS:%c=%o)
 

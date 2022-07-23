@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "./gnl/get_next_line.h"
 
 typedef struct	s_data {
 	void	*img;
