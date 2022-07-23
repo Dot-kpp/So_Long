@@ -71,4 +71,5 @@ int read_map(void)
 
 int main (void){
 	read_map();
+	print_map();
 }

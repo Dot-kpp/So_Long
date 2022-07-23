@@ -21,6 +21,9 @@
 #include <fcntl.h>
 #include "./gnl/get_next_line.h"
 
+
+int read_map(void);
+
 typedef struct	s_data {
 	void	*img;
 } t_data;
