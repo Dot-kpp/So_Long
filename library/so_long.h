@@ -22,10 +22,6 @@
 
 typedef struct	s_data {
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 } t_data;
 
 typedef struct s_walls
@@ -48,5 +44,11 @@ typedef struct s_collectables
 	void	*img;
 }	t_collectables;
 
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*mlx_win;
+	t_data data;
+}	t_vars;
 
  #endif
