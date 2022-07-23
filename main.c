@@ -69,7 +69,22 @@ int read_map(void)
     return (0);
 }
 
+int map_width(void)
+{
+	int fd;
+	int x;
+	char *line;
+
+	x = 0;
+	fd = open("./maps/test.ber", O_RDONLY);
+	while (line)
+    {
+        line = get_next_line(fd);
+		x++;
+	}
+	return (line);
+}
+
 int main (void){
-	read_map();
-	print_map();
+	map_width();
 }
