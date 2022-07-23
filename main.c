@@ -11,11 +11,9 @@ P for the player’s starting position.
 
 
 
-void map_validate(void);
+int map_width(){
 
-void player_validate(void);
-
-void enemie_validate(void);
+}
 
 void wall_print(t_vars *vars){
 	char	*relative_path = "./Assets/wall.xpm";
@@ -33,20 +31,22 @@ void floor_print(t_vars *vars){
 	vars->data.img = mlx_xpm_file_to_image(vars->mlx, relative_path, &img_width, &img_height);
 }
 
-int window(void)
+int print_map(void)
 {
  
 	t_vars vars;
 	int x;
 	int y;
 
-	x = 500;
-	y = 500;
+	x = map_width();
+	y = map_height();
 	
 	vars.mlx = mlx_init();
 	vars.mlx_win = mlx_new_window(vars.mlx, x, y, "So_long my homie");
 	wall_print(&vars);
+
 	int i = 0;
+	
 	while (i < 10)
 	{
 		mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.data.img, i * 32, 0);
@@ -58,5 +58,5 @@ int window(void)
 }
 
 int main (void){
-	window();
+	print_map();
 }
