@@ -1,8 +1,8 @@
-TARGET = so_long
+NAME = so_long.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -o so_long
 
 LIB = ./library/mlx 
 
