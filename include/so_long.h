@@ -19,40 +19,32 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "./gnl/get_next_line.h"
+#include "../library/libft/libft.h"
 
 
-int read_map(void);
-
-typedef struct	s_data {
-	void	*img;
-} t_data;
-
-typedef struct s_walls
-{
-	void	*img;
-}	t_walls;
-
-typedef struct s_floor
-{
-	void	*img;
-}	t_floor;
-
-typedef struct s_obstacle
-{
-	void	*img;
-}	t_obstacle;
-
-typedef struct s_collectables
-{
-	void	*img;
-}	t_collectables;
-
-typedef struct s_vars
-{
+typedef struct s_data {
 	void	*mlx;
-	void	*mlx_win;
-	t_data data;
-}	t_vars;
+	void	*win;
+	char	*addr;
+	char	**map;
+	char	*map_name;
+	int		map_fd;
+	int		height;
+	int		width;
+	int		line_length;
+	int		endian;
+	int		moves;
+	int		x_p;
+	int		y_p;
+	int		n_col;
+	int		n_p;
+	int		n_ex;
+	void	*wall;
+	void	*empty;
+	void	*exit;
+	void	*collect;
+	void	*player;
+}			t_data;
+
 
  #endif

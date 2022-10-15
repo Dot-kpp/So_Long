@@ -1,1 +1,2 @@
-#include "./library/so_long.h"
+#include "../include/so_long.h"
+
