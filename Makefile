@@ -1,40 +1,42 @@
-NAME = so_long.a
+NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -o so_long
+CFLAGS = -Wall -Werror -Wextra
 
-LIB = ./library/mlx 
+LIBX = /library/mlx/libmlx.a 
 
-SRCS = 	so_long.c main.c ./library/gnl/get_next_line.c ./library/gnl/get_next_line_utils.c
+LIBFT = /library/libft/libft.a
+
+SRCS = 	so_long.c main.c
 
 OBJ = $(SRCS:%c=%o)
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+all: $(LIBFT) $(NAME)
+
+$(LIBFT) :
+	@echo "Your libft is compiling"
+	@echo ""
+	@$(MAKE) -C libft
+	@echo ""
 
 
-all:
-	@$(CC) -lmlx -framework OpenGL -framework AppKit $(SRCS)
+$(NAME) : src/so_long.o src/parsing.o src/errors.o include/so_long.h
+	@echo "Compiling so_long"
+	@echo ""
+	@$(CC) src/so_long.o src/parsing.o src/errors.o libft/libft.a -lmlx -framework OpenGL -framework AppKit -o so_long
 	@echo ""
 	@echo "Your shit is compiled"
 	@echo ""
-	@echo "ᕙ( ͡❛ ͜ʖ ͡❛)ᕗ"
-	@echo ""
-
-run:$(TARGET)
-
-$(TARGET): $(OBJ)
-	$(CC) $(OBJ) $(LIB) -framework OpenGL -framework AppKit -o $(TARGET)
 
 frustration:
 	@echo "FUUUCK"
 
 clean:
-	@rm -rf $(OBJ) $(BONUSOBJ)
+	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(TARGET) *.out
+	@rm -rf *.out *.exe so_long ./src/*.o ./libft/src/*.o 
 	@echo ""
 	@echo "Your shit is clean af!"
 	@echo ""

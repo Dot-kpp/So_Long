@@ -19,30 +19,18 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "../library/libft/libft.h"
+#include "../libft/headers/libft.h"
 
 
 typedef struct s_data {
 	void	*mlx;
 	void	*win;
 	char	*addr;
-	char	**map;
-	char	*map_name;
-	int		map_fd;
 	int		height;
 	int		width;
-	int		line_length;
-	int		endian;
-	int		moves;
-	int		x_p;
-	int		y_p;
-	int		n_col;
-	int		n_p;
-	int		n_ex;
 	void	*wall;
-	void	*empty;
-	void	*exit;
-	void	*collect;
+	void	*floor;
+	void	*collectable;
 	void	*player;
 }			t_data;
 
