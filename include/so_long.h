@@ -25,13 +25,13 @@
 typedef struct s_data {
 	void	*mlx;
 	void	*win;
-	char	*addr;
 	int		height;
 	int		width;
 	void	*wall;
 	void	*floor;
 	void	*collectable;
 	void	*player;
+	void	*exit;
 }			t_data;
 
 

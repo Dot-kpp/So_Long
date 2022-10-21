@@ -6,12 +6,17 @@ void input_error(void)
     exit (1);
 }
 
+
+
 void parse_for_init(int argc, char *argv)
 {
-    if (argc != 2)
+    if (argc == 2 && argv != NULL)
+    {
+        read_map();
+    }
+    else 
         input_error();
-    if (argv == NULL)
-        input_error();
+    
 }
 
 // int init_map_assets(t_data data)
@@ -31,15 +36,13 @@ void parse_for_init(int argc, char *argv)
 
 int main(int argc, char **argv)
 {
-    (void) argc;
-    (void) argv;
     t_data data;
 
     char *path;
 
     path = "./Assets/wall.xpm";
-    //parse_for_init(argc, *argv);
-    
+
+    parse_for_init(argc, *argv);   
     data.mlx = mlx_init();
     data.wall = mlx_xpm_file_to_image (data.mlx, path, &data.width, &data.height);
     data.win = mlx_new_window(data.mlx, 500, 500, "so_long");
