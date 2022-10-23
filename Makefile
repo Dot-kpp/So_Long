@@ -8,7 +8,7 @@ LIBX = /library/mlx/libmlx.a
 
 LIBFT = /library/libft/libft.a
 
-SRCS = 	so_long.c main.c
+SRCS = 	so_long.c init_data.c errors.c
 
 OBJ = $(SRCS:%c=%o)
 
@@ -21,10 +21,10 @@ $(LIBFT) :
 	@echo ""
 
 
-$(NAME) : src/so_long.o src/parsing.o src/errors.o include/so_long.h
+$(NAME) : src/so_long.o src/parsing.o src/errors.o src/init_data.o include/so_long.h
 	@echo "Compiling so_long"
 	@echo ""
-	@$(CC) src/so_long.o src/parsing.o src/errors.o libft/libft.a -lmlx -framework OpenGL -framework AppKit -o so_long
+	@$(CC) src/so_long.o src/parsing.o src/errors.o src/init_data.o libft/libft.a -lmlx -framework OpenGL -framework AppKit -o so_long
 	@echo ""
 	@echo "Your shit is compiled"
 	@echo ""

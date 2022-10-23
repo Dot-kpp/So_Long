@@ -1,51 +1,44 @@
 #include "../include/so_long.h"
 
-void input_error(void)
+
+int parse_for_init(int argc, char *argv)
 {
-    write(1, "Please enter a valid input: ./so_long map.ber\n", 47);
-    exit (1);
-}
+    int count;
 
-
-
-void parse_for_init(int argc, char *argv)
-{
     if (argc == 2 && argv != NULL)
     {
-        read_map();
+        count = ft_strlen(argv) - 4;
+        if(ft_strncmp(&argv[count], ".ber", 4) != 0)
+            input_error();
+        else
+            return (1);
     }
     else 
-        input_error();
-    
+        input_error();  
+    return(0);
 }
 
-// int init_map_assets(t_data data)
-// {
-//     char *path;
 
-//     path = "./Assets/wall.xpm";
-//     data.wall = mlx_xpm_file_to_image (data.mlx, path, &data.width, &data.height);
-
-//     return(1);
-// }
-
-// int render_map(t_data data, int x, int y)
-// {
-//     return (1);
-// }
+// you are here..
+void get_map_size(t_data *data, char argv[1])
+{
+    (void) argv;
+    data->height = 500;
+    data->width = 500;
+}
 
 int main(int argc, char **argv)
 {
-    t_data data;
-
-    char *path;
-
-    path = "./Assets/wall.xpm";
-
-    parse_for_init(argc, *argv);   
-    data.mlx = mlx_init();
-    data.wall = mlx_xpm_file_to_image (data.mlx, path, &data.width, &data.height);
-    data.win = mlx_new_window(data.mlx, 500, 500, "so_long");
-    mlx_put_image_to_window(data.mlx, data.win, data.wall, 0, 0);
-    mlx_loop(data.mlx);
+    t_data *data;
+    data = get_data();
+    if (parse_for_init(argc, argv[1]) == 1)
+    {   
+        init_data(*argv, argc);
+        get_map_size(data, argv[1]);
+        data->win = mlx_new_window(data->mlx, data->width, data->height, "so_long");
+        mlx_put_image_to_window(data->mlx, data->win, data->wall, 0, 0);
+        mlx_put_image_to_window(data->mlx, data->win, data->floor, 32, 32);
+        mlx_put_image_to_window(data->mlx, data->win, data->collectable, 32, 32);
+        mlx_loop(data->mlx);
+    }
 }
