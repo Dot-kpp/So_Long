@@ -18,13 +18,40 @@ int parse_for_init(int argc, char *argv)
     return(0);
 }
 
-
-// you are here..
 void get_map_size(t_data *data, char argv[1])
 {
-    (void) argv;
-    data->height = 500;
-    data->width = 500;
+    int i;
+    int fd;
+    char *rows;
+    
+    i = 0;
+    fd = open(argv, O_RDONLY);
+    rows = get_next_line(fd);
+    data->height = 1;
+    data->width = 1;
+    while (rows[i])
+    {
+        i++;
+        data->width++;
+    }
+    while (rows != NULL)
+    {
+        free (rows);
+        rows = get_next_line(fd);
+        data->height++;
+    }
+    data->height = data->height * 32;
+    data->width = data->width * 32;
+    free(rows);
+    close(fd);
+}
+
+void render_images(char argv[1])
+{
+    int fd;
+
+    fd = open(argv, O_RDONLY);
+    
 }
 
 int main(int argc, char **argv)
@@ -36,6 +63,7 @@ int main(int argc, char **argv)
         init_data(*argv, argc);
         get_map_size(data, argv[1]);
         data->win = mlx_new_window(data->mlx, data->width, data->height, "so_long");
+        render_images(argv[1]);
         mlx_put_image_to_window(data->mlx, data->win, data->wall, 0, 0);
         mlx_put_image_to_window(data->mlx, data->win, data->floor, 32, 32);
         mlx_put_image_to_window(data->mlx, data->win, data->collectable, 32, 32);
