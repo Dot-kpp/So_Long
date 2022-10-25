@@ -26,7 +26,9 @@ typedef struct s_data {
 	void	*mlx;
 	void	*win;
 	int		height;
+	int		h;
 	int		width;
+	int		w;
 	void	*wall;
 	void	*floor;
 	void	*collectable;
