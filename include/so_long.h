@@ -32,6 +32,7 @@ typedef struct s_data {
 	void	*collectable;
 	void	*player;
 	void	*exit;
+	char 	**map;
 }			t_data;
 
 

@@ -15,21 +15,24 @@ void    init_data(char *argv, int argc)
     (void) argc;
     (void) argv;
     t_data  *data;
+    int h;
+    int w;
     char *path;
 
     data = get_data();
+    
 
     data->mlx = mlx_init();
 
     path = "./Assets/wall.xpm";
     
-    data->wall = mlx_xpm_file_to_image (data->mlx, path, &data->width, &data->height);
+    data->wall = mlx_xpm_file_to_image (data->mlx, path, &w, &h);
     
     path = "./Assets/floor.xpm";
 
-    data->floor = mlx_xpm_file_to_image (data->mlx, path, &data->width, &data->height);
+    data->floor = mlx_xpm_file_to_image (data->mlx, path, &w, &h);
     
     path = "./Assets/coin.xpm";
 
-    data->collectable = mlx_xpm_file_to_image (data->mlx, path, &data->width, &data->height);
+    data->collectable = mlx_xpm_file_to_image (data->mlx, path, &w, &h);
 }
