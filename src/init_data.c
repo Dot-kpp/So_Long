@@ -35,4 +35,12 @@ void    init_data(char *argv, int argc)
     path = "./Assets/coin.xpm";
 
     data->collectable = mlx_xpm_file_to_image (data->mlx, path, &w, &h);
+    
+    path = "./Assets/player.xpm";
+
+    data->player = mlx_xpm_file_to_image (data->mlx, path, &w, &h);
+    
+    path = "./Assets/exit.xpm";
+
+    data->exit = mlx_xpm_file_to_image (data->mlx, path, &w, &h);
 }

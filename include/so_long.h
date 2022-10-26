@@ -41,5 +41,15 @@ typedef struct s_data {
 void 	input_error(void);
 t_data 	*get_data(void);
 void    init_data(char *argv, int argc);
+void get_map_size(t_data *data, char argv[1]);
+void    get_map(t_data *data, char *argv);
+int parse_for_init(int argc, char *argv);
+void render_images(char tile, int x, int y);
+void render_frame(void);
+void move_up(t_data *data);
+void move_down(t_data *data);
+void move_left(t_data *data);
+void move_right(t_data *data);
+void move_exit(t_data *data);
 
  #endif
