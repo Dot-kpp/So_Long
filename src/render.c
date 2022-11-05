@@ -23,6 +23,7 @@ void render_images(char tile, int x, int y)
     {
         mlx_put_image_to_window(data->mlx, data->win, data->floor, x, y);
         mlx_put_image_to_window(data->mlx, data->win, data->player, x, y);
+
     }
     if (tile == 'E')
     {
@@ -31,13 +32,11 @@ void render_images(char tile, int x, int y)
     }
 }
 
-void render_frame(void)
+int render_frame(t_data *data)
 {
     int x;
     int y;
-    t_data *data;
-
-    data = get_data();
+    
     y = 0;
     while (y < data->w)
     {
@@ -49,4 +48,5 @@ void render_frame(void)
         }
         y++;
     }
+    return(0);
 }
