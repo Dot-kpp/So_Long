@@ -71,8 +71,9 @@ void get_player_position(void)
     }
 }
 
-void get_collectable_count(t_data *data)
+void get_collectable_count(void)
 {
+    t_data *data;
     int i;
     int j;
     data = get_data();

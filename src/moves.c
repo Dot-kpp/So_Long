@@ -27,6 +27,7 @@ void move_up(void)
 			}
 			data->move_counter++;
 		}
+        printf("%d\n", data->collectable_count);
 	}
 }
 
@@ -50,7 +51,7 @@ void move_down(void)
 		{
 			if (data->map[x + 1][y] == '0' || data->map[x + 1][y] == 'C')
 			{
-				if (data->map[x][y + 1] == 'C')
+				if (data->map[x + 1][y] == 'C')
                 {
 					data->collectable_count--;
                 }

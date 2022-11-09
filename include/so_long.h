@@ -66,6 +66,6 @@ int close_win(void);
 
 void get_player_position(void);
 
-void get_collectable_count(t_data *data);
+void get_collectable_count();
 
  #endif
