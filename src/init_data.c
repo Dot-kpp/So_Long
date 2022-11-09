@@ -24,6 +24,8 @@ void    init_data(char *argv, int argc)
 
     data->mlx = mlx_init();
 
+    data->move_counter = 0;
+
     path = "./Assets/wall.xpm";
     
     data->wall = mlx_xpm_file_to_image (data->mlx, path, &w, &h);
@@ -44,3 +46,4 @@ void    init_data(char *argv, int argc)
 
     data->exit = mlx_xpm_file_to_image (data->mlx, path, &w, &h);
 }
+

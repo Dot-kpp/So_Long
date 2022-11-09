@@ -38,6 +38,7 @@ int render_frame(t_data *data)
     int y;
     
     y = 0;
+    data = get_data();
     while (y < data->w)
     {
         x = 0;

@@ -5,7 +5,7 @@ void get_map_size(t_data *data, char argv[1])
     int i;
     int fd;
     char *rows;
-    
+
     i = 0;
     fd = open(argv, O_RDONLY);
     rows = get_next_line(fd);
@@ -18,7 +18,7 @@ void get_map_size(t_data *data, char argv[1])
     }
     while (rows != NULL)
     {
-        free (rows);
+        free(rows);
         rows = get_next_line(fd);
         data->h++;
     }
@@ -28,14 +28,13 @@ void get_map_size(t_data *data, char argv[1])
     close(fd);
 }
 
-
-void    get_map(t_data *data, char *argv)
+void get_map(t_data *data, char *argv)
 {
     int i;
     int fd;
 
     data = get_data();
-    fd = open (argv, O_RDONLY);
+    fd = open(argv, O_RDONLY);
     data->map = ft_calloc(data->h + 1, sizeof(char *));
     i = 0;
     while (i <= data->h)
@@ -45,4 +44,48 @@ void    get_map(t_data *data, char *argv)
     }
     data->map[i] = "\0";
     close(fd);
+}
+
+void get_player_position(void)
+{
+    t_data *data;
+
+    int i;
+    int j;
+
+    data = get_data();
+    j = 0;
+    while (j <= data->w)
+    {
+        i = 0;
+        while (i < data->h)
+        {
+            if (data->map[i][j] == 'P')
+            {
+                data->pos_x = i;
+                data->pos_y = j;
+            }
+            i++;
+        }
+        j++;
+    }
+}
+
+void get_collectable_count(t_data *data)
+{
+    int i;
+    int j;
+    data = get_data();
+    j = 0;
+    while (j < data->w)
+    {
+        i = 0;
+        while (i < data->h)
+        {
+            if (data->map[i][j] == 'C')
+                data->collectable_count++;
+            i++;
+        }
+        j++;
+    }
 }

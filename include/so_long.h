@@ -32,9 +32,13 @@ typedef struct s_data {
 	void	*wall;
 	void	*floor;
 	void	*collectable;
+	int		collectable_count;
 	void	*player;
 	void	*exit;
 	char 	**map;
+	int		pos_x;
+	int 	pos_y;
+	int 	move_counter;
 }			t_data;
 
 
@@ -46,22 +50,22 @@ void    get_map(t_data *data, char *argv);
 int parse_for_init(int argc, char *argv);
 void render_images(char tile, int x, int y);
 int render_frame(t_data *data);
-void move_up(t_data *data);
-void move_down(t_data *data);
-void move_left(t_data *data);
-void move_right(t_data *data);
-void move_exit(t_data *data);
 
-void move_up(t_data *data);
+void move_exit(void);
 
-void move_down(t_data *data);
+void move_up(void);
 
-void move_left(t_data *data);
+void move_down(void);
 
-void move_right(t_data *data);
+void move_left(void);
 
-void move_player_l(t_data *data, int i, int j);
+void move_right(void);
 
 
-void move_exit(t_data *data);
+int close_win(void);
+
+void get_player_position(void);
+
+void get_collectable_count(t_data *data);
+
  #endif
