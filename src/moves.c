@@ -14,7 +14,7 @@ void move_up(void)
 		if (data->map[x - 1][y] == 'E' )
 		{
 			if (data->collectable_count == 0)
-				close_win();
+				win_game();
 		}
 		else
 		{
@@ -27,7 +27,8 @@ void move_up(void)
 			}
 			data->move_counter++;
 		}
-        printf("%d\n", data->collectable_count);
+        ft_printf("Number of move: %d\n", data->move_counter);
+        ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
 	}
 }
 
@@ -45,7 +46,7 @@ void move_down(void)
 		if (data->map[x + 1][y] == 'E' )
 		{
 			if (data->collectable_count == 0)
-				close_win();
+				win_game();
 		}
 		else
 		{
@@ -60,6 +61,8 @@ void move_down(void)
 			}
 			data->move_counter++;
 		}
+        ft_printf("Number of move: %d\n", data->move_counter);
+        ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
 	}
 }
 
@@ -77,7 +80,7 @@ void move_left(void)
 		if (data->map[x][y - 1] == 'E' )
 		{
 			if (data->collectable_count == 0)
-				close_win();
+				win_game();
 		}
 		else
 		{
@@ -90,6 +93,8 @@ void move_left(void)
 			}
 			data->move_counter++;
 		}
+        ft_printf("Number of move: %d\n", data->move_counter);
+        ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
 	}
 }
 
@@ -107,7 +112,7 @@ void move_right(void)
 		if (data->map[x][y + 1] == 'E' )
 		{
 			if (data->collectable_count == 0)
-				close_win();
+				win_game();
 		}
 		else
 		{
@@ -122,11 +127,8 @@ void move_right(void)
 			}
 			data->move_counter++;
 		}
+        ft_printf("Number of move: %d\n", data->move_counter);
+        ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
 	}
-}
-
-void move_exit(void)
-{
-    exit(0);
 }
 

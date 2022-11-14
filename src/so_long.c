@@ -4,7 +4,9 @@ void esc_key(int keycode)
 {
 	if (keycode == 53)
 	{
-		printf("escaped window.");
+		ft_printf("_______________\n");
+		ft_printf("escaped window.\n");
+		ft_printf("_______________\n");
 		exit(0);
 	}	
 }
@@ -39,9 +41,21 @@ void	game_controls(int keycode, t_data *data)
 
 int close_win(void)
 {
-	printf("Window closed!\n");
+	ft_printf("______________\n");
+	ft_printf("Window closed!\n");
+	ft_printf("______________\n");
 	exit(0);
 }
+
+int win_game(void)
+{
+	ft_printf("______________________________________________________________\n");
+	ft_printf("Hell yea!! You Actually won?! Thats insane in the membrane!!!!\n");
+	ft_printf("______________________________________________________________\n");
+	exit(0);
+}
+
+
 
 int key_press_event(int keycode, t_data *data)
 {
@@ -56,16 +70,17 @@ int main(int argc, char **argv)
     t_data *data;
     data = get_data();
     if (parse_for_init(argc, argv[1]) == 1)
-    {   
+    {
         init_data(*argv, argc);
         get_map_size(data, argv[1]);
-        data->win = mlx_new_window(data->mlx, data->width, data->height, "so_long");
         get_map(data, argv[1]);
+		check_map();
+		init_other_data();
+        data->win = mlx_new_window(data->mlx, data->width, data->height, "so_long");
 		get_collectable_count();
 		render_frame(data);
         mlx_hook(data->win, 2, 0, key_press_event, &data);
         mlx_hook(data->win, 17, 0, close_win, &data);
-		// mlx_loop_hook(data->mlx, render_frame, &data);
         mlx_loop(data->mlx);
     }
 }

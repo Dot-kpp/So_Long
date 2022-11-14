@@ -36,6 +36,7 @@ typedef struct s_data {
 	void	*player;
 	void	*exit;
 	char 	**map;
+	char 	**tmp_map;
 	int		pos_x;
 	int 	pos_y;
 	int 	move_counter;
@@ -43,15 +44,20 @@ typedef struct s_data {
 
 
 void 	input_error(void);
+void input_error_map_path(void);
+void input_error_invalid_map(void);
+void map_error(void);
+
 t_data 	*get_data(void);
 void    init_data(char *argv, int argc);
 void get_map_size(t_data *data, char argv[1]);
 void    get_map(t_data *data, char *argv);
+void get_tmp_map(char *argv);
 int parse_for_init(int argc, char *argv);
+void check_number_of_p_e(void);
 void render_images(char tile, int x, int y);
 int render_frame(t_data *data);
-
-void move_exit(void);
+void check_map(void);
 
 void move_up(void);
 
@@ -61,11 +67,15 @@ void move_left(void);
 
 void move_right(void);
 
+void init_other_data(void);
+
 
 int close_win(void);
 
 void get_player_position(void);
 
 void get_collectable_count();
+
+int win_game(void);
 
  #endif
