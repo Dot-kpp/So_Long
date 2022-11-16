@@ -33,13 +33,16 @@ void get_map(t_data *data, char *argv)
     int i;
     int fd;
 
+char  *temp;
+
     data = get_data();
     fd = open(argv, O_RDONLY);
     data->map = ft_calloc(data->h + 1, sizeof(char *));
     i = 0;
     while (i <= data->h)
     {
-        data->map[i] = get_next_line(fd);
+        temp = get_next_line(fd);
+        data->map[i] = temp;
         i++;
     }
     data->map[i] = "\0";
@@ -89,4 +92,5 @@ void get_collectable_count(void)
         }
         j++;
     }
+    data->check_collectable_count = data->collectable_count;
 }

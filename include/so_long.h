@@ -33,6 +33,7 @@ typedef struct s_data {
 	void	*floor;
 	void	*collectable;
 	int		collectable_count;
+	int		check_collectable_count;
 	void	*player;
 	void	*exit;
 	char 	**map;
@@ -40,13 +41,21 @@ typedef struct s_data {
 	int		pos_x;
 	int 	pos_y;
 	int 	move_counter;
+	int		exit_flag;
+	int		flag;
 }			t_data;
 
 
 void 	input_error(void);
 void input_error_map_path(void);
 void input_error_invalid_map(void);
+void map_error_valid_path(void);
 void map_error(void);
+
+void check_left(int x, int y);
+void check_right(int x, int y);
+void check_up(int x, int y);
+void check_down(int x, int y);
 
 t_data 	*get_data(void);
 void    init_data(char *argv, int argc);
@@ -77,5 +86,6 @@ void get_player_position(void);
 void get_collectable_count();
 
 int win_game(void);
+void floodfill(char **map, char u, char v, int x, int y);
 
  #endif

@@ -74,10 +74,13 @@ int main(int argc, char **argv)
         init_data(*argv, argc);
         get_map_size(data, argv[1]);
         get_map(data, argv[1]);
+
+		get_collectable_count();
 		check_map();
+        get_map(data, argv[1]);
+
 		init_other_data();
         data->win = mlx_new_window(data->mlx, data->width, data->height, "so_long");
-		get_collectable_count();
 		render_frame(data);
         mlx_hook(data->win, 2, 0, key_press_event, &data);
         mlx_hook(data->win, 17, 0, close_win, &data);
