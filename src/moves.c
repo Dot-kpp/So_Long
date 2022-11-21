@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpilotte <jpilotte@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/18 14:48:20 by jpilotte          #+#    #+#             */
+/*   Updated: 2022/11/18 16:55:40 by jpilotte         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
-void move_up(void)
+void	move_up(t_data	*data)
 {
-    t_data *data;
-    data = get_data();
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
+	data = get_data();
 	x = data->pos_x;
 	y = data->pos_y;
 	if (data->map[x - 1][y] != '1')
@@ -18,27 +29,20 @@ void move_up(void)
 		}
 		else
 		{
-			if (data->map[x - 1][y] == '0' || data->map[x - 1][y] == 'C')
-			{
-				if (data->map[x - 1][y] == 'C')
-					data->collectable_count--;
-				data->map[x][y] = '0';
-				data->map[x - 1][y] = 'P';
-			}
+			savior_up(x, y);
 			data->move_counter++;
 		}
-        ft_printf("Number of move: %d\n", data->move_counter);
-        ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
+		ft_printf("Number of move: %d\n", data->move_counter);
+		ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
 	}
 }
 
-void move_down(void)
+void	move_down(t_data	*data)
 {
-    t_data *data;
-    data = get_data();
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
+	data = get_data();
 	x = data->pos_x;
 	y = data->pos_y;
 	if (data->map[x + 1][y] != '1')
@@ -50,29 +54,20 @@ void move_down(void)
 		}
 		else
 		{
-			if (data->map[x + 1][y] == '0' || data->map[x + 1][y] == 'C')
-			{
-				if (data->map[x + 1][y] == 'C')
-                {
-					data->collectable_count--;
-                }
-				data->map[x][y] = '0';
-				data->map[x + 1][y] = 'P';
-			}
+			savior_down(x, y);
 			data->move_counter++;
 		}
-        ft_printf("Number of move: %d\n", data->move_counter);
-        ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
+		ft_printf("Number of move: %d\n", data->move_counter);
+		ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
 	}
 }
 
-void move_left(void)
+void	move_left(t_data	*data)
 {
-    t_data *data;
-    data = get_data();
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
+	data = get_data();
 	x = data->pos_x;
 	y = data->pos_y;
 	if (data->map[x][y - 1] != '1')
@@ -84,27 +79,20 @@ void move_left(void)
 		}
 		else
 		{
-			if (data->map[x][y - 1] == '0' || data->map[x][y - 1] == 'C')
-			{
-				if (data->map[x][y - 1] == 'C')
-					data->collectable_count--;
-				data->map[x][y] = '0';
-				data->map[x][y - 1] = 'P';
-			}
+			savior_left(x, y);
 			data->move_counter++;
 		}
-        ft_printf("Number of move: %d\n", data->move_counter);
-        ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
+		ft_printf("Number of move: %d\n", data->move_counter);
+		ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
 	}
 }
 
-void move_right(void)
+void	move_right(t_data	*data)
 {
-    t_data *data;
-    data = get_data();
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
+	data = get_data();
 	x = data->pos_x;
 	y = data->pos_y;
 	if (data->map[x][y + 1] != '1')
@@ -116,19 +104,10 @@ void move_right(void)
 		}
 		else
 		{
-			if (data->map[x][y + 1] == '0' || data->map[x][y + 1] == 'C')
-			{
-				if (data->map[x][y + 1] == 'C')
-                {
-					data->collectable_count--;
-                }
-				data->map[x][y] = '0';
-				data->map[x][y + 1] = 'P';
-			}
+			savior_right(x, y);
 			data->move_counter++;
 		}
-        ft_printf("Number of move: %d\n", data->move_counter);
-        ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
+		ft_printf("Number of move: %d\n", data->move_counter);
+		ft_printf("Collectables remaining: %d\n\n", data->collectable_count);
 	}
 }
-

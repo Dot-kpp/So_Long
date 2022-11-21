@@ -1,89 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpilotte <jpilotte@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/18 14:48:50 by jpilotte          #+#    #+#             */
+/*   Updated: 2022/11/18 15:15:46 by jpilotte         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
-void esc_key(int keycode)
+int	main(int argc, char **argv)
 {
-	if (keycode == 53)
+	t_data	*data;
+
+	data = get_data();
+	if (parse_for_init(argc, argv[1]) == 1)
 	{
-		ft_printf("_______________\n");
-		ft_printf("escaped window.\n");
-		ft_printf("_______________\n");
-		exit(0);
-	}	
-}
-
-void	game_controls(int keycode, t_data *data)
-{
-	if (keycode == 2)
-	{
-		get_player_position();
-		move_right();
-		render_frame(data);
-	}
-	if (keycode == 0)
-	{
-		get_player_position();
-		move_left();
-		render_frame(data);
-	}
-	else if (keycode == 1)
-	{
-		get_player_position();
-		move_down();
-		render_frame(data);
-	}
-	else if (keycode == 13)
-	{
-		get_player_position();
-		move_up();
-		render_frame(data);
-	}
-}
-
-int close_win(void)
-{
-	ft_printf("______________\n");
-	ft_printf("Window closed!\n");
-	ft_printf("______________\n");
-	exit(0);
-}
-
-int win_game(void)
-{
-	ft_printf("______________________________________________________________\n");
-	ft_printf("Hell yea!! You Actually won?! Thats insane in the membrane!!!!\n");
-	ft_printf("______________________________________________________________\n");
-	exit(0);
-}
-
-
-
-int key_press_event(int keycode, t_data *data)
-{
-	esc_key(keycode);
-	game_controls(keycode, data);
-	return (0);
-}
-
-
-int main(int argc, char **argv)
-{
-    t_data *data;
-    data = get_data();
-    if (parse_for_init(argc, argv[1]) == 1)
-    {
-        init_data(*argv, argc);
-        get_map_size(data, argv[1]);
-        get_map(data, argv[1]);
-
+		init_data(*argv, argc);
+		get_map_size(data, argv[1]);
+		get_map(data, argv[1]);
 		get_collectable_count();
 		check_map();
-        get_map(data, argv[1]);
-
+		free_dbl_arr(data->map);
+		get_map(data, argv[1]);
 		init_other_data();
-        data->win = mlx_new_window(data->mlx, data->width, data->height, "so_long");
+		data->win = mlx_new_window(data->mlx,
+				data->width, data->height, "so_long");
 		render_frame(data);
-        mlx_hook(data->win, 2, 0, key_press_event, &data);
-        mlx_hook(data->win, 17, 0, close_win, &data);
-        mlx_loop(data->mlx);
-    }
+		mlx_hook(data->win, 2, 0, key_press_event, &data);
+		mlx_hook(data->win, 17, 0, close_win, &data);
+		mlx_loop(data->mlx);
+	}
 }
