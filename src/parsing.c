@@ -6,7 +6,7 @@
 /*   By: jpilotte <jpilotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:48:29 by jpilotte          #+#    #+#             */
-/*   Updated: 2022/11/18 17:08:04 by jpilotte         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:06:09 by jpilotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,14 @@ void	check_side_walls(void)
 	}
 }
 
-void	check_number_of_p_e(void)
+void	check_number_of_p(void)
 {
 	t_data	*data;
 	int		i;
 	int		j;
-	int		count_e;
 	int		count_p;
 
 	data = get_data();
-	count_e = 0;
 	count_p = 0;
 	j = 0;
 	while (j < data->w)
@@ -65,7 +63,28 @@ void	check_number_of_p_e(void)
 				if (count_p != 1)
 					map_error();
 			}
-			else if (data->map[i][j] == 'E')
+			i++;
+		}
+		j++;
+	}
+}
+
+void	check_number_of_e(void)
+{
+	t_data	*data;
+	int		i;
+	int		j;
+	int		count_e;
+
+	data = get_data();
+	count_e = 0;
+	j = 0;
+	while (j < data->w)
+	{
+		i = 0;
+		while (i < data->h)
+		{
+			if (data->map[i][j] == 'E')
 			{
 				count_e++;
 				if (count_e != 1)
@@ -100,25 +119,5 @@ void	check_valid_char(void)
 				map_error();
 		}
 		j++;
-	}
-}
-
-void	floodfill(char u, char v, int x, int y)
-{
-	t_data	*data;
-
-	data = get_data();
-	if (data->map[x][y] == 'P' || data->map[x][y] == '0'
-			|| data->map[x][y] == 'C' || data->map[x][y] == 'E')
-	{
-		if (data->map[x][y] == 'C')
-			data->check_collectable_count--;
-		if (data->map[x][y] == 'E')
-			data->exit_flag = 1;
-		data->map[x][y] = 'D';
-		floodfill(u, v, x + 1, y);
-		floodfill(u, v, x - 1, y);
-		floodfill(u, v, x, y - 1);
-		floodfill(u, v, x, y + 1);
 	}
 }

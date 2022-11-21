@@ -6,7 +6,7 @@
 /*   By: jpilotte <jpilotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:00:44 by jpilotte          #+#    #+#             */
-/*   Updated: 2022/11/18 17:08:44 by jpilotte         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:05:42 by jpilotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	get_map_size(t_data *data, char argv[1]);
 void	get_map(t_data *data, char *argv);
 void	get_tmp_map(char *argv);
 int		parse_for_init(int argc, char *argv);
-void	check_number_of_p_e(void);
+void	check_number_of_p(void);
+void	check_number_of_e(void);
 void	render_images(char tile, int x, int y);
 int		render_frame(t_data *data);
 void	check_map(void);
@@ -85,5 +86,6 @@ void	savior_left(int x ,int y);
 void	savior_right(int x ,int y);
 void	savior_down(int x ,int y);
 void	savior_up(int x ,int y);
+void	floodfill(char u, char v, int x, int y);
 
  #endif

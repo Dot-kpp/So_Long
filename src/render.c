@@ -6,11 +6,29 @@
 /*   By: jpilotte <jpilotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:48:41 by jpilotte          #+#    #+#             */
-/*   Updated: 2022/11/18 15:27:00 by jpilotte         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:11:17 by jpilotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	render_e_savior(int x, int y)
+{
+	t_data	*data;
+
+	data = get_data();
+	mlx_put_image_to_window(data->mlx, data->win, data->floor, x, y);
+	mlx_put_image_to_window(data->mlx, data->win, data->exit, x, y);
+}
+
+void	render_p_savior(int x, int y)
+{
+	t_data	*data;
+
+	data = get_data();
+	mlx_put_image_to_window(data->mlx, data->win, data->floor, x, y);
+	mlx_put_image_to_window(data->mlx, data->win, data->player, x, y);
+}
 
 void	render_images(char tile, int x, int y)
 {
@@ -32,13 +50,11 @@ void	render_images(char tile, int x, int y)
 	}
 	if (tile == 'P')
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->floor, x, y);
-		mlx_put_image_to_window(data->mlx, data->win, data->player, x, y);
+		render_p_savior(x, y);
 	}
 	if (tile == 'E')
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->floor, x, y);
-		mlx_put_image_to_window(data->mlx, data->win, data->exit, x, y);
+		render_e_savior(x, y);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: jpilotte <jpilotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:48:07 by jpilotte          #+#    #+#             */
-/*   Updated: 2022/11/18 17:06:44 by jpilotte         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:02:45 by jpilotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ void	check_map(void)
 	x = data->pos_x;
 	y = data->pos_y;
 	check_valid_char();
-	check_number_of_p_e();
+	check_number_of_p();
+	check_number_of_e();
 	check_top_bottom_walls();
 	check_side_walls();
 	floodfill('0', 'D', x, y);
