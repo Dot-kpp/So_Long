@@ -6,7 +6,7 @@
 /*   By: jpilotte <jpilotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:48:20 by jpilotte          #+#    #+#             */
-/*   Updated: 2022/11/18 16:55:40 by jpilotte         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:28:51 by jpilotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	move_up(t_data	*data)
 		{
 			if (data->collectable_count == 0)
 				win_game();
+			data->exit_walked = 1;
+			data->map[x][y] = '0';
+			data->map[x - 1][y] = 'P';
 		}
 		else
 		{
@@ -51,6 +54,9 @@ void	move_down(t_data	*data)
 		{
 			if (data->collectable_count == 0)
 				win_game();
+			data->exit_walked = 1;
+			data->map[x][y] = '0';
+			data->map[x + 1][y] = 'P';
 		}
 		else
 		{
@@ -76,6 +82,9 @@ void	move_left(t_data	*data)
 		{
 			if (data->collectable_count == 0)
 				win_game();
+			data->exit_walked = 1;
+			data->map[x][y] = '0';
+			data->map[x][y - 1] = 'P';
 		}
 		else
 		{
@@ -101,6 +110,9 @@ void	move_right(t_data	*data)
 		{
 			if (data->collectable_count == 0)
 				win_game();
+			data->exit_walked = 1;
+			data->map[x][y] = '0';
+			data->map[x][y + 1] = 'P';
 		}
 		else
 		{

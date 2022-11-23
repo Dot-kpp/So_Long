@@ -6,20 +6,19 @@
 /*   By: jpilotte <jpilotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:00:44 by jpilotte          #+#    #+#             */
-/*   Updated: 2022/11/21 12:05:42 by jpilotte         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:27:33 by jpilotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
- #define SO_LONG_H
+# define SO_LONG_H
 
-#include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "../libft/headers/libft.h"
-
+# include <mlx.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include "../libft/headers/libft.h"
 
 typedef struct s_data {
 	void	*mlx;
@@ -35,15 +34,15 @@ typedef struct s_data {
 	int		check_collectable_count;
 	void	*player;
 	void	*exit;
-	char 	**map;
-	char 	**tmp_map;
+	char	**map;
+	char	**tmp_map;
 	int		pos_x;
-	int 	pos_y;
-	int 	move_counter;
+	int		pos_y;
+	int		exit_walked;
+	int		move_counter;
 	int		exit_flag;
 	int		flag;
 }			t_data;
-
 
 void	input_error(void);
 void	input_error_map_path(void);
@@ -68,7 +67,7 @@ void	move_right(t_data	*data);
 void	init_other_data(void);
 int		close_win(void);
 void	get_player_position(void);
-void	get_collectable_count();
+void	get_collectable_count(void);
 int		win_game(void);
 void	floodfill(char u, char v, int x, int y);
 void	free_dbl_arr(char **dbl_arr);
@@ -82,10 +81,10 @@ int		parse_for_init(int argc, char *argv);
 void	check_valid_char(void);
 void	check_side_walls(void);
 void	check_top_bottom_walls(void);
-void	savior_left(int x ,int y);
-void	savior_right(int x ,int y);
-void	savior_down(int x ,int y);
-void	savior_up(int x ,int y);
+void	savior_left(int x, int y);
+void	savior_right(int x, int y);
+void	savior_down(int x, int y);
+void	savior_up(int x, int y);
 void	floodfill(char u, char v, int x, int y);
 
- #endif
+#endif
