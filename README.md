@@ -1,42 +1,4 @@
 # So_Long
-So long project from the 42 cursus
+The So Long project is a mandatory part of the 42 cursus. The project involves creating a basic 2D game in which a character (such as a dolphin) must escape a certain place (such as Earth) by collecting some type of collectible (such as fish). To complete the project, you must submit the following files: a Makefile, header files with the extension *.h, source code files with the extension *.c, and any maps that are used in the game.
 
-
-
-
-Mandatory part
-
-Program name:
- so_long
-
-Turn in files:
- Makefile, *.h, *.c, maps
-
-Makefile:
- NAME, all, clean, fclean, re
-
-Arguments:
- A map in format *.ber
-
-External functs.
-
-• open, close, read, write,
-malloc, free, perror,
-strerror, exit
-
-• All functions of the math
-library (-lm compiler option,
-man man 3 math)
-
-• All functions of the MiniLibX
-
-• ft_printf and any equivalent
-YOU coded
-
-Libft authorized: Yes
-
-Description:
- You must create a basic 2D game in which a dolphin
-escapes Earth after eating some fish. Instead of
-a dolphin, fish, and the Earth, you can use any
-character, any collectible and any place you want.
+The trick is, the game must be created using the MLX library. A student created library that emulates, in a way.. some of the libx or X11 functions.
